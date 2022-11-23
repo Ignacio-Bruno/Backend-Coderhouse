@@ -1,4 +1,4 @@
-const Container = require('./segundoDesafio.js');
+const Container = require('./2ndChallenge.js');
 const products = new Container('./products.json');
 
 async function Test() {
