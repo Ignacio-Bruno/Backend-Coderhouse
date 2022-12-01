@@ -1,3 +1,27 @@
+const express = require('express')
+const classContainer = require(`./container/contenedor`)
+
+const app = express();
+const PORT = 8080
+
+const Container = new classContainer(`products.txt`)
+
+const server = app.listen(PORT,() => {
+  console.log(`servidor activo en el puerto: ${PORT}`);
+})
+
+app.get("/products", async (req, res) => {
+
+  const prods = await Container.getAll()
+  console.log(prods);
+
+  res.send({productos: prods })
+})
+
+app.get("/random", (req, res) => {
+  res.send({productos: "Productos random" })
+})
+
 class User {
   constructor(nombre, apellido, libros, mascotas){
     this.nombre = nombre;
@@ -34,16 +58,6 @@ class User {
    [{nombre: "Leviatán", autor: "Thomas Hobbes"},
    {nombre: "Sofia´s world", autor: "Jostein Gaarder"}
   ], ["Dog", "Cat"]);
-
-
-   console.log(Roberto.getFullName());
-   console.log(Roberto.countMascotas());
-   console.log(Roberto.getMascotas());
-   Roberto.addMascotas("Tortuga");
-   console.log(Roberto.countMascotas());
-   console.log(Roberto.getMascotas());
-   Roberto.addBook("The Pragmatic Programmer", "Andy Hunt y Dave Thomas");
-   console.log(Roberto.getBookNames());
 
 class person {
   constructor(nombre, apellido, edad, domicilio, mascota) {
@@ -82,9 +96,3 @@ const ignacio = new person (
   "Loria 477, Lomas de Zamora",
   [{animal: "perro", nombreMascota: "Moro"}]
 );
-
-console.log(ignacio.getFullName());
-console.log(ignacio.getAge());
-console.log(ignacio.getDomicile())
-ignacio.addMascota("suricata", "Charlie");
-console.log(ignacio.getPets());
