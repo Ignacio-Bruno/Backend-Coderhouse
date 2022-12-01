@@ -18,8 +18,11 @@ app.get("/products", async (req, res) => {
   res.send({productos: prods })
 })
 
-app.get("/random", (req, res) => {
-  res.send({productos: "Productos random" })
+app.get("/random", async (req, res) => {
+  const prods = await Container.getAll()
+  const random = parseInt(Math.random()* prods.length)
+
+  res.send({productos: prods[random] })
 })
 
 class User {
