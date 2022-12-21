@@ -1,4 +1,23 @@
 const { Router } = require("express");
+const upload = require("../../config/multer");
+
+const products = Router();
+
+products.post("/products", upload.array("myFiles", 4), (req, res, next) => {
+  const files = req.files;
+  if (!files) {
+    const error = new Error("Choose your files");
+    return next(error);
+  }
+  return res.send(files);
+});
+
+module.exports = products;
+
+
+
+
+/* const { Router } = require("express");
 const router = Router();
 const Container = require("../container/products.js");
 const productos = new Container("./container/productos.json");
@@ -46,4 +65,5 @@ router.delete("/:id", async (req, res) => {
     res.status(200).json(producto);
 });
 
-module.exports = router;
+module.exports = router; */
+

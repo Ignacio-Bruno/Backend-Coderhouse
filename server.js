@@ -1,20 +1,19 @@
 const express = require("express");
-const bp = require("body-parser");
+const users = require('./users/users')
 const router = require("./routers/index");
+/* const animals = require('./app/router/animals/animals')*/
 const app = express();
 const PORT = 3000;
 
-app.use(bp.json());
-app.use(bp.urlencoded({ extended: true }));
-app.use(express.static('public'));
-/* en esta parte donde queria buscar el path y renderizar el html, me las rebusque pero le termine pidiendo ayuda a un compañero 
-por lo cual creo que funciona pero no se si de la manera más apropiada */
-app.use("/api", router);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.set('view engine','ejs')
+app.set('views','./app/views')
+
+app.use('/api', users)
+app.use('/api/v2', animals)
 
 const server = app.listen(PORT, () => {
-    console.log(
-        `Servidor analizando en el puerto ${server.address().port}`
-    );
-    console.log(`http://localhost:${server.address().port}`);
+  console.log(`App listening on port ${server.address().port}`);
 });
-server.on("error", error => console.log(`Error en el servidor: ${error}`));

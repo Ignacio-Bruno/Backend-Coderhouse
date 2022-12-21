@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files</title>
+</head>
+<body>
+    <Header>
+        <nav>
+            <img src="/sources/world-cup.png" alt="copa">
+            <h1>Campeones del Mundo</h1>
+            <a href=""></a>
+        </nav>
+    </Header>
+    <form action="/api/users" method="post" enctype="multipart/form-data">
+        <label for="myFile">Choose a file</label>
+        <input type="file" name="myFile" id="myFile">
+        <button type="submit">Enviar</button>
+    </form>
+    {{#if print}}
+        <ul>
+            <li>{{file.fieldname}}</li>
+            <li>{{file.originalname}}</li>
+            <li>{{file.encoding}}</li>
+            <li>{{file.mimetype}}</li>
+            <li>{{file.filename}}</li>
+            <li>{{file.destination}}</li>
+        </ul>
+    {{/if}}
+
+    {{#if error}}
+        <p>{{error}}</p>
+    {{/if}}
+    
+
+</body>
+</html>
