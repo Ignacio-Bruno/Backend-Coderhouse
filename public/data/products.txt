@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Hoodie",
+    "price": 5500,
+    "thumbnail": "https://www.bernardes.com.ar/productos/hoodie-oversize-travis-scott-crudo/",
+    "id": 1
+  },
+
+  {
+    "title": "Camisa",
+    "price": 3600,
+    "thumbnail": "https://www.bernardes.com.ar/productos/camisa-fibrana-justin-negra/",
+    "id": 2
+  },
+
+  {
+    "title": "Bermuda",
+    "price": 2700,
+    "thumbnail": "https://www.bernardes.com.ar/productos/bermuda-rustica-batik-cueva/",
+    "id": 3
+  },
+
+  {
+    "title": "Musculosa",
+    "price": 1300,
+    "thumbnail": "https://www.bernardes.com.ar/musculosas/",
+    "id": 4
+  }
+]
